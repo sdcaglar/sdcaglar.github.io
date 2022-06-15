@@ -442,7 +442,7 @@
 
 body {
     margin: auto;
-    max-width: 39rem;
+    max-width: 50rem;
     padding: 1rem;
     background-color: #fff;
     color: #333;
@@ -881,4 +881,8 @@ pre {
     padding-bottom: 20px;
     font-size: 14px;
     color: rgb(255 255 255);
+}
+
+b {
+ float: right;
 }
