@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta http-equiv="Content-type" Content="Text/html";charset="UTF8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Seda Çağlar</title>
+    <meta name="description" content="Yazılım Mühendisinin Blogu"/>
+    <meta name="Author" content="Seda, seedacaglar@gmail.com">
+    <meta name="keywords" content="blog, yazilim, mühendis"/>
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Alegreya:400,400i|Lato:400,400i,700,900|Roboto+Mono:400,300">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/shades-of-purple.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+
+    <link rel="stylesheet" href="../../css/normalize.css"/>
+    <link rel="stylesheet" href="../../css/theme.css"/>
+</head>
+<body>
+<nav class="nav">
+    <div class="nav__left">
+        <a href="../../index.html">Anasayfa</a>
+        <a href="../../about.html">Hakkımda</a>
+    </div>
+    <div class="nav__right">
+        <a target="_blank" href="https://github.com/sdcaglar" class="link-github">GitHub</a>
+    </div>
+</nav>
+<article class="mar-b-7">
+    <header class="text-center">
+        <time class="mar-b-6">23 Haziran Perşembe, 2022</time>
+        <h1 class="mar-b-7">FFmpeg</h1>
+    </header>
+    <p><a href="https://github.com/FFmpeg/FFmpeg" style="text-decoration: none;" target=”_blank”>FFmpeg;</a> video, ses ve diğer çokluortam (multimedya) dosyalarını işlemek için ücretsiz ve açık kaynak kodlu çokluortam kütüphanesi ve uçbirim tabanlı bir araçtır.</p>
+    <h2>FFmpeg Araçları</h2>
+    <ul>
+        <li>ffmpeg</li>
+        <li>ffplay</li>
+        <li>ffprobe</li>
+    </ul>
+
+    <h2>Kurulum</h2>
+    <pre><code>sudo apt install ffmpeg
+ffmpeg -version</code></pre>
+
+    <h2>Video Bilgilerini Öğrenme</h2>
+    <pre><code>ffmpeg -i input.mp4
+ffmpeg -i input.mp4 -hide_banner</code></pre>
+
+    <h2>Video veya Ses Dosyalarını Önizleme</h2>
+    <pre><code>ffplay input.mp4</code></pre>
+
+    <h2>Videoyu Yeniden Boyutlandırma</h2>
+    <pre><code>ffmpeg -i input.mp4 -vf scale=1920:1080 output.mp4</code></pre>
+
+    <h2>Video Dosyasını Görsellere Dönüştürmek</h2>
+    <pre><code>ffmpeg -i video.mp4 image%d.jpg</code></pre>
+
+    <h2>Videoyu Sese Dönüştürme</h2>
+    <pre><code>ffmpeg -i input.mp4 -vn output.mp3</code></pre>
+
+    <h2>Videoyu GIF’e Dönüştürme</h2>
+    <pre><code>ffmpeg -i input.mp4 gif-dosyasi.gif</code></pre>
+
+    <h2>MOV’dan MP4’e Dönüştürme</h2>
+    <pre><code>ffmpeg -i input.mov output.mp4</code></pre>
+
+    <h2>Video ve Sesi Birleştirme</h2>
+    <pre><code>ffmpeg -i audio.mp3 -i video.mp4 video_audio_mix.mkv</code></pre>
+
+    <h2>Videodan Ses Kaldırma</h2>
+    <pre><code>ffmpeg -i input.mp4 -an mute-output.mp4</code></pre>
+
+    <h2>Videoya Altyazı Ekleme</h2>
+    <pre><code>ffmpeg -i video.avi -vf subtitles=subtitle.srt out.avi</code></pre>
+
+    <h2>Videonun Belirli Bir Kısmını Dönüştürme</h2>
+    <ul>
+        <li>-t: videonun zamanını belirtme</li>
+        <li>-ss: başlangıç zamanını ayarlama</li>
+        <li>-to: bitiş zamanını ayarlama</li>
+    </ul>
+    <pre><code>ffmpeg -i input.mp4 -t 10 output.mkv</code></pre>
+
+    <h2>Video Kırpmak</h2>
+    <pre><code>ffmpeg -i input.mp4 -ss 00:03:20 -to 00:05:48 -c copy output.mp4</code></pre>
+
+    <h2>Videoları Birleştirmek</h2>
+    <ul>
+        <li>Birleştirmek istediğimiz videoları sırasıyla bir metin dosyasına yazarak videoları birleştirebiliriz.</li>
+    </ul>
+    <pre><code>ffmpeg -f concat -i file-list.txt -c copy output.mp4</code></pre>
+
+    <h2>Masaüstü / Ekran Kaydınızı Yakalama</h2>
+    <pre><code>ffmpeg -video_size 1024x768 -framerate 25 -f x11grab -i :0.0+100,200 output.mp4</code></pre>
+
+    <h2>Videoya Watermark Yerleştirme</h2>
+    <ul>
+        <li>overlay: watermark görselini videonun neresine koyacağını belirtme</li>
+    </ul>
+    <pre><code>ffmpeg -i input.mp4 -i watermark.png -filter_complex "overlay=10:10" output.mp4</code></pre>
+
+</article>
+<footer class="text-center mar-tb-6">
+    © 2022 Seda Çağlar.
+</footer>
+
+<script>hljs.highlightAll();</script>
+</body>
+</html>
