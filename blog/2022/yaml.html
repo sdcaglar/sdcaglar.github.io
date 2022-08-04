@@ -43,13 +43,16 @@
     <h2>Yaml Dosyası Okuma</h2>
 
 <pre><code>--- # Application configuration - config.yaml
-author: Franc
-database:
-        driver: com.mysql.jdbc.Driver
-        port: 3306
-        dbname: mydb
-        username: root
-        password:
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: postgresdb
+  POSTGRES_USER: postgresadmin
+  POSTGRES_PASSWORD: admin123
 </code>
 </pre>
 <pre><code>#!/usr/bin/python3
@@ -84,7 +87,7 @@ aylar:
   - haziran
   - temmuz
   - agustos
-  - eylül
+  - eylul
   - ekim
   - kasim
   - aralik
